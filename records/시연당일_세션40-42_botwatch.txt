@@ -1,0 +1,98 @@
+시연 로그
+j-i15a708@jupyter10:~/P11708_new/P11708/ai$ botwatch
+2026-08-10 08:27:01,894 INFO [bot] [40] BE 벡터 주입 0/42 (전부 null - 자체 임베딩 폴백)
+2026-08-10 08:27:19,540 INFO [engine.matcher] gate 기각: sim=0.3889 < 0.58 | keyword=['약관'] (부정어 없는 절)
+2026-08-10 08:27:24,686 ERROR [bot] [40] 오디오 유입 1.83x 실시간 - 포맷/중복구독 의심
+2026-08-10 08:27:32,743 INFO [engine.state_machine] [40] COVERED 47 via keyword (None) | keyword=['보험금을 지급하지 않는 사유', '지급이 제한'] (부정어 없는 절) | gate sim=1.0000 >= 0.58
+2026-08-10 08:27:32,743 INFO [engine.matcher] gate 기각: sim=0.4314 < 0.58 | keyword=['보험금을 지급'] (부정어 없는 절)
+2026-08-10 08:27:32,743 INFO [engine.matcher] gate 기각: sim=0.3510 < 0.58 | keyword=['지급'] (부정어 없는 절)
+2026-08-10 08:27:54,695 ERROR [bot] [40] 오디오 유입 1.21x 실시간 - 포맷/중복구독 의심
+2026-08-10 08:27:56,120 INFO [engine.matcher] gate 기각: sim=0.3934 < 0.58 | keyword=['해약환급금'] (부정어 없는 절)
+2026-08-10 08:27:56,120 INFO [engine.matcher] gate 기각: sim=0.3858 < 0.58 | keyword=['해약환급금'] (부정어 없는 절)
+2026-08-10 08:27:56,120 INFO [engine.matcher] gate 기각: sim=0.4516 < 0.58 | keyword=['해약환급금'] (부정어 없는 절)
+2026-08-10 08:27:56,120 INFO [engine.matcher] gate 기각: sim=0.4204 < 0.58 | keyword=['해약환급금'] (부정어 없는 절)
+2026-08-10 08:27:56,121 INFO [engine.state_machine] [40] COVERED 12 via keyword (None) | keyword=['언제든지 계약을 해지', '해약환급금'] (부정어 없는 절) | gate sim=0.8378 >= 0.58
+2026-08-10 08:27:56,121 INFO [engine.matcher] gate 기각: sim=0.4268 < 0.58 | keyword=['해약환급금'] (부정어 없는 절)
+2026-08-10 08:27:56,121 INFO [engine.matcher] gate 기각: sim=0.5561 < 0.58 | keyword=['계약을 해지'] (부정어 없는 절)
+2026-08-10 08:27:56,121 INFO [engine.matcher] gate 기각: sim=0.5767 < 0.58 | keyword=['해약환급금', '지급'] (부정어 없는 절)
+2026-08-10 08:27:56,121 INFO [engine.matcher] gate 기각: sim=0.5447 < 0.58 | keyword=['계약을 해지'] (부정어 없는 절)
+2026-08-10 08:27:56,121 INFO [engine.state_machine] [40] COVERED 27 via keyword (None) | keyword=['언제든지 계약을 해지', '해약환급금'] (부정어 없는 절) | gate sim=0.8654 >= 0.58
+2026-08-10 08:27:56,122 INFO [engine.matcher] gate 기각: sim=0.4798 < 0.58 | keyword=['해지'] (부정어 없는 절)
+2026-08-10 08:27:56,122 INFO [engine.matcher] gate 기각: sim=0.4753 < 0.58 | keyword=['환급금'] (부정어 없는 절)
+2026-08-10 08:28:24,695 INFO [bot] [40] 오디오 유입 1.12x
+2026-08-10 08:28:28,584 INFO [engine.matcher] gate 기각: sim=0.5054 < 0.58 | keyword=['계약을 해지'] (부정어 없는 절)
+2026-08-10 08:28:28,585 INFO [engine.state_machine] [40] COVERED 17 via keyword (None) | keyword=['계약을 해지'] (부정어 없는 절) | gate sim=0.6821 >= 0.58
+2026-08-10 08:28:28,585 INFO [engine.matcher] gate 기각: sim=0.4801 < 0.58 | keyword=['해지'] (부정어 없는 절)
+2026-08-10 08:28:28,585 INFO [engine.state_machine] [40] COVERED 38 via keyword (None) | keyword=['고지의무', '통지의무', '위반'] (부정어 없는 절) | gate sim=0.7321 >= 0.58
+2026-08-10 08:28:54,696 INFO [bot] [40] 오디오 유입 1.08x
+2026-08-10 08:29:24,705 INFO [bot] [40] 오디오 유입 1.06x
+2026-08-10 08:29:54,706 INFO [bot] [40] 오디오 유입 1.05x
+2026-08-10 08:30:24,715 INFO [bot] [40] 오디오 유입 1.04x
+2026-08-10 08:30:54,715 INFO [bot] [40] 오디오 유입 1.04x
+2026-08-10 08:31:24,716 INFO [bot] [40] 오디오 유입 1.03x
+2026-08-10 08:31:54,716 INFO [bot] [40] 오디오 유입 1.03x
+2026-08-10 08:32:24,725 INFO [bot] [40] 오디오 유입 1.03x
+2026-08-10 08:32:54,735 INFO [bot] [40] 오디오 유입 1.02x
+2026-08-10 08:33:24,735 INFO [bot] [40] 오디오 유입 1.02x
+2026-08-10 08:33:54,736 INFO [bot] [40] 오디오 유입 1.02x
+2026-08-10 08:34:24,736 INFO [bot] [40] 오디오 유입 1.02x
+2026-08-10 08:34:54,745 INFO [bot] [40] 오디오 유입 1.02x
+2026-08-10 08:35:24,756 INFO [bot] [40] 오디오 유입 1.02x
+2026-08-10 08:35:54,765 INFO [bot] [40] 오디오 유입 1.02x
+2026-08-10 08:36:24,775 INFO [bot] [40] 오디오 유입 1.02x
+2026-08-10 08:36:54,775 INFO [bot] [40] 오디오 유입 1.01x
+2026-08-10 08:37:24,785 INFO [bot] [40] 오디오 유입 1.01x
+2026-08-10 08:37:54,785 INFO [bot] [40] 오디오 유입 1.01x
+2026-08-10 08:38:24,786 INFO [bot] [40] 오디오 유입 1.01x
+2026-08-10 08:38:54,786 INFO [bot] [40] 오디오 유입 1.01x
+2026-08-10 08:39:24,795 INFO [bot] [40] 오디오 유입 1.01x
+2026-08-10 08:39:54,796 INFO [bot] [40] 오디오 유입 1.01x
+2026-08-10 08:40:24,806 INFO [bot] [40] 오디오 유입 1.01x
+2026-08-10 08:40:54,815 INFO [bot] [40] 오디오 유입 1.01x
+2026-08-10 08:41:24,816 INFO [bot] [40] 오디오 유입 1.01x
+2026-08-10 08:41:54,825 INFO [bot] [40] 오디오 유입 1.01x
+2026-08-10 08:42:24,825 INFO [bot] [40] 오디오 유입 1.01x
+2026-08-10 08:42:28,419 INFO [bot] [40] GATE_SNAPSHOT(END) covered=5/42
+2026-08-10 08:42:28,428 INFO [bot] [40] 세션 종료
+2026-08-10 08:55:18,397 INFO [bot] [41] BE 벡터 주입 0/45 (전부 null - 자체 임베딩 폴백)
+2026-08-10 08:55:31,093 INFO [engine.matcher] gate 기각: sim=0.4552 < 0.58 | keyword=['공시이율'] (부정어 없는 절)
+2026-08-10 08:55:31,093 INFO [engine.matcher] gate 기각: sim=0.4683 < 0.58 | keyword=['공시이율'] (부정어 없는 절)
+2026-08-10 08:55:31,093 INFO [engine.matcher] gate 기각: sim=0.5605 < 0.58 | keyword=['공시이율'] (부정어 없는 절)
+2026-08-10 08:55:31,094 INFO [engine.state_machine] [41] COVERED 162 via keyword (None) | keyword=['최저보증이율', '공시이율'] (부정어 없는 절) | gate sim=0.6201 >= 0.58
+2026-08-10 08:55:31,094 INFO [engine.matcher] gate 기각: sim=0.3236 < 0.58 | keyword=['환급금'] (부정어 없는 절)
+2026-08-10 08:55:31,325 INFO [bot] [41] 오디오 유입 1.00x
+2026-08-10 08:56:01,326 INFO [bot] [41] 오디오 유입 1.00x
+2026-08-10 08:56:31,326 INFO [bot] [41] 오디오 유입 1.00x
+2026-08-10 08:57:01,335 INFO [bot] [41] 오디오 유입 1.00x
+2026-08-10 08:57:31,336 INFO [bot] [41] 오디오 유입 1.00x
+2026-08-10 08:58:01,345 INFO [bot] [41] 오디오 유입 1.00x
+2026-08-10 08:58:31,345 INFO [bot] [41] 오디오 유입 1.00x
+2026-08-10 08:59:05,976 INFO [bot] [41] 오디오 유입 1.00x
+2026-08-10 09:15:14,299 INFO [bot] [42] BE 벡터 주입 0/42 (전부 null - 자체 임베딩 폴백)
+2026-08-10 09:15:25,565 INFO [bot] [42] 오디오 유입 1.00x
+2026-08-10 09:15:45,370 INFO [engine.matcher] gate 기각: sim=0.3889 < 0.58 | keyword=['약관'] (부정어 없는 절)
+2026-08-10 09:15:55,575 INFO [bot] [42] 오디오 유입 1.00x
+2026-08-10 09:16:04,314 INFO [engine.state_machine] [42] COVERED 47 via keyword (None) | keyword=['보험금을 지급하지 않는 사유', '지급이 제한'] (부정어 없는 절) | gate sim=1.0000 >= 0.58
+2026-08-10 09:16:04,315 INFO [engine.matcher] gate 기각: sim=0.4314 < 0.58 | keyword=['보험금을 지급'] (부정어 없는 절)
+2026-08-10 09:16:04,315 INFO [engine.matcher] gate 기각: sim=0.3510 < 0.58 | keyword=['지급'] (부정어 없는 절)
+2026-08-10 09:16:25,585 INFO [bot] [42] 오디오 유입 1.00x
+2026-08-10 09:16:36,628 INFO [engine.matcher] gate 기각: sim=0.4147 < 0.58 | keyword=['해약환급금'] (부정어 없는 절)
+2026-08-10 09:16:36,628 INFO [engine.matcher] gate 기각: sim=0.3920 < 0.58 | keyword=['해약환급금'] (부정어 없는 절)
+2026-08-10 09:16:36,628 INFO [engine.matcher] gate 기각: sim=0.4669 < 0.58 | keyword=['해약환급금'] (부정어 없는 절)
+2026-08-10 09:16:36,628 INFO [engine.matcher] gate 기각: sim=0.4310 < 0.58 | keyword=['해약환급금'] (부정어 없는 절)
+2026-08-10 09:16:36,629 INFO [engine.state_machine] [42] COVERED 12 via keyword (None) | keyword=['언제든지 계약을 해지', '해약환급금'] (부정어 없는 절) | gate sim=0.8357 >= 0.58
+2026-08-10 09:16:36,629 INFO [engine.matcher] gate 기각: sim=0.4375 < 0.58 | keyword=['해약환급금'] (부정어 없는 절)
+2026-08-10 09:16:36,629 INFO [engine.matcher] gate 기각: sim=0.5633 < 0.58 | keyword=['계약을 해지'] (부정어 없는 절)
+2026-08-10 09:16:36,629 INFO [engine.matcher] gate 기각: sim=0.5746 < 0.58 | keyword=['해약환급금', '지급'] (부정어 없는 절)
+2026-08-10 09:16:36,629 INFO [engine.matcher] gate 기각: sim=0.5562 < 0.58 | keyword=['계약을 해지'] (부정어 없는 절)
+2026-08-10 09:16:36,629 INFO [engine.state_machine] [42] COVERED 27 via keyword (None) | keyword=['언제든지 계약을 해지', '해약환급금'] (부정어 없는 절) | gate sim=0.8590 >= 0.58
+2026-08-10 09:16:36,630 INFO [engine.matcher] gate 기각: sim=0.5097 < 0.58 | keyword=['해지'] (부정어 없는 절)
+2026-08-10 09:16:36,630 INFO [engine.matcher] gate 기각: sim=0.4886 < 0.58 | keyword=['환급금'] (부정어 없는 절)
+2026-08-10 09:16:49,645 INFO [engine.matcher] gate 기각: sim=0.5019 < 0.58 | keyword=['계약을 해지'] (부정어 없는 절)
+2026-08-10 09:16:49,646 INFO [engine.state_machine] [42] COVERED 17 via keyword (None) | keyword=['계약을 해지'] (부정어 없는 절) | gate sim=0.6796 >= 0.58
+2026-08-10 09:16:49,646 INFO [engine.matcher] gate 기각: sim=0.4761 < 0.58 | keyword=['해지'] (부정어 없는 절)
+2026-08-10 09:16:49,646 INFO [engine.state_machine] [42] COVERED 38 via keyword (None) | keyword=['고지의무', '통지의무', '위반'] (부정어 없는 절) | gate sim=0.7269 >= 0.58
+2026-08-10 09:16:55,595 INFO [bot] [42] 오디오 유입 1.00x
+2026-08-10 09:17:25,596 INFO [bot] [42] 오디오 유입 1.00x
+2026-08-10 09:17:36,858 INFO [bot] [42] GATE_SNAPSHOT(END) covered=5/42
+2026-08-10 09:17:36,867 INFO [bot] [42] 세션 종료

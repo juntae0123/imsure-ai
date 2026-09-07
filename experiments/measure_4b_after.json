@@ -1,0 +1,296 @@
+{
+  "utterances": [
+    {
+      "utterance": 0,
+      "expected": [],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 1,
+      "expected": [
+        "TERMS_EXPLAIN"
+      ],
+      "got": [
+        "TERMS_EXPLAIN"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 2,
+      "expected": [
+        "COVERAGE_PERIOD"
+      ],
+      "got": [
+        "COVERAGE_PERIOD"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 3,
+      "expected": [
+        "EXCLUSION_BEFORE_FIRST_PREMIUM"
+      ],
+      "got": [
+        "EXCLUSION_BEFORE_FIRST_PREMIUM"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 4,
+      "expected": [
+        "LOSS_POSSIBILITY"
+      ],
+      "got": [
+        "CONTRACT_CANCEL",
+        "LOSS_POSSIBILITY"
+      ],
+      "falseT": [
+        "CONTRACT_CANCEL"
+      ],
+      "miss": []
+    },
+    {
+      "utterance": 5,
+      "expected": [
+        "CONTRACT_CANCEL"
+      ],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 6,
+      "expected": [
+        "PREMIUM_REDUCTION"
+      ],
+      "got": [
+        "PREMIUM_REDUCTION"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 7,
+      "expected": [
+        "EXCLUSION_WAITING_PERIOD_90D"
+      ],
+      "got": [
+        "COVERAGE_DETAIL_CANCER_DIAG",
+        "EXCLUSION_WAITING_PERIOD_90D"
+      ],
+      "falseT": [
+        "COVERAGE_DETAIL_CANCER_DIAG"
+      ],
+      "miss": []
+    },
+    {
+      "utterance": 8,
+      "expected": [
+        "PAYMENT_LIMIT_1YEAR_50"
+      ],
+      "got": [
+        "PAYMENT_LIMIT_1YEAR_50"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 9,
+      "expected": [
+        "COVERAGE_DETAIL_CANCER_DIAG",
+        "EXCLUSION_SIMILAR_CANCER"
+      ],
+      "got": [
+        "EXCLUSION_SIMILAR_CANCER"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 10,
+      "expected": [
+        "COVERAGE_DETAIL_BRAIN_HEART_DIAG"
+      ],
+      "got": [
+        "COVERAGE_DETAIL_BRAIN_HEART_DIAG"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 11,
+      "expected": [
+        "COVERAGE_DETAIL_WAIVER"
+      ],
+      "got": [
+        "COVERAGE_DETAIL_WAIVER"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 12,
+      "expected": [
+        "COVERAGE_DETAIL_HOSPITALIZATION"
+      ],
+      "got": [
+        "COVERAGE_DETAIL_HOSPITALIZATION"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 13,
+      "expected": [
+        "COVERAGE_DETAIL_SURGERY"
+      ],
+      "got": [
+        "COVERAGE_DETAIL_SURGERY"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 14,
+      "expected": [
+        "PAYMENT_LIMIT_180DAYS_10_1YEAR_50",
+        "PAYMENT_LIMIT_ROBOT_SURGERY"
+      ],
+      "got": [
+        "PAYMENT_LIMIT_180DAYS_10_1YEAR_50",
+        "PAYMENT_LIMIT_ROBOT_SURGERY"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 15,
+      "expected": [
+        "COVERAGE_DETAIL_DEATH"
+      ],
+      "got": [
+        "COVERAGE_DETAIL_DEATH"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 16,
+      "expected": [
+        "COVERAGE_DETAIL_LIABILITY",
+        "EXCLUSION_PROPORTIONAL_LIABILITY"
+      ],
+      "got": [
+        "COVERAGE_DETAIL_LIABILITY",
+        "EXCLUSION_PROPORTIONAL_LIABILITY"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 17,
+      "expected": [
+        "EXCLUSION_CATARACT"
+      ],
+      "got": [
+        "EXCLUSION_CATARACT"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 18,
+      "expected": [
+        "SURRENDER_VALUE_EXCEPTION_100"
+      ],
+      "got": [
+        "SURRENDER_VALUE_EXCEPTION_100"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 19,
+      "expected": [
+        "SURRENDER_VALUE_EXCEPTION_RESERVE"
+      ],
+      "got": [
+        "SURRENDER_VALUE_EXCEPTION_RESERVE"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 20,
+      "expected": [],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    }
+  ],
+  "spurious": [],
+  "premature": [
+    {
+      "utterance": 4,
+      "itemCode": "CONTRACT_CANCEL",
+      "keywords": [
+        "해지"
+      ],
+      "text": "중도에 해지하시면 해약환급금이 납입 보험료보다 적어 손실이 발생할 수 있습니다.",
+      "expectedAt": [
+        5
+      ]
+    },
+    {
+      "utterance": 7,
+      "itemCode": "COVERAGE_DETAIL_CANCER_DIAG",
+      "keywords": [
+        "암",
+        "진단확정"
+      ],
+      "text": "계약일부터 90일이 지나기 전 암 진단확정 시 해당 특약은 무효로 하고 보험료를 환급합니다.",
+      "expectedAt": [
+        9
+      ]
+    }
+  ],
+  "misses": [],
+  "blame": [
+    {
+      "itemCode": "CONTRACT_CANCEL",
+      "keyword": "해지",
+      "count": 1
+    },
+    {
+      "itemCode": "COVERAGE_DETAIL_CANCER_DIAG",
+      "keyword": "암",
+      "count": 1
+    },
+    {
+      "itemCode": "COVERAGE_DETAIL_CANCER_DIAG",
+      "keyword": "진단확정",
+      "count": 1
+    }
+  ],
+  "summary": {
+    "totalItems": 23,
+    "expectedItems": 22,
+    "finalCovered": 22,
+    "falseTSpurious": 0,
+    "falseTPremature": 2,
+    "dirtyItems": 2,
+    "misses": 0,
+    "neverCovered": [],
+    "grayZone": {
+      "embeddingGray": 0,
+      "doubleNegation": 0,
+      "negationExemptHit": 3,
+      "grayMaxSim": null
+    }
+  }
+}

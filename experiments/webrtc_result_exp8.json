@@ -1,0 +1,11 @@
+{
+  "eval": "webrtc_ab_exp8",
+  "date": "2026-08-07 21:30",
+  "adapter": "/home/j-i15a708/stt-finetune/whisper-lora-exp8/final",
+  "n_samples": 120,
+  "num_beams": 5,
+  "cer_before": 9.89,
+  "cer_after": 4.53,
+  "improve_pct": 54.2,
+  "elapsed_min": 2.2
+}

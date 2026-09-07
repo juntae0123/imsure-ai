@@ -1,0 +1,5 @@
+j-i15a708@jupyter10:~/stt-finetune/eval_webrtc$ cd ~/P11708_new/P11708/ai && python3 tools/session_report.py bot.log 15 --near 0.05 > session15_report.txt 2>&1 && head -3 session15_report.txt
+========================================================================
+세션 15 | 항목 42개 | covered=13/42 (END) | 발화 세그먼트 65개 | 임계(역산) 0.58 -> 13개 말하고 중단한것
+========================================================================
+j-i15a708@jupyter10

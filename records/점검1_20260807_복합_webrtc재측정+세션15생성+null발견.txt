@@ -1,0 +1,164 @@
+ ──
+cd ~/stt-finetune/eval_webrtc
+python3 - <<'PY'
+# =====================================================================
+# WebRTC A/B 재측정 - exp8 어댑터 (발표 최종 수치용)
+# 조건은 기존 평가와 동일: 같은 120건, beam=5, fp16
+# =====================================================================
+import os, json, time, torch, jiwer, soundfile as sf, librosa
+from pathlib import Path
+from collections import Counter
+import transformers, warnings
+transformers.logging.set_verbosity_error()
+warnings.filterwarnings("ignore")
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")
+
+BASE_MODEL = "seastar105/whisper-medium-komixv2"
+ADAPTER    = Path.home()/'stt-finetune'/'whisper-lora-exp8'/'final'   # ★ exp5 -> exp8
+EV         = Path('./webrtc_eval')
+
+# ── 사전 검증 ──
+assert (EV/'manifest.jsonl').exists(), f"FAIL: manifest 없음 ({EV})"
+assert (ADAPTER/'adapter_model.safetensors').exists(), f"FAIL: exp8 어댑터 없음 ({ADAPTER})"
+
+items = [json.loads(l) for l in
+         (EV/'manifest.jsonl').read_text(encoding='utf-8').strip().split('\n') if l]
+print(f"평가 샘플 {len(items)}건 / 화자 {len(Counter(i['speaker'] for i in items))}명")
+print(f"어댑터: {ADAPTER}")
+
+from transformers import WhisperProcessor, WhisperForConditionalGeneration
+from peft import PeftModel
+
+processor = WhisperProcessor.from_pretrained(BASE_MODEL, language="korean", task="transcribe")
+
+def load_base():
+    m = WhisperForConditionalGeneration.from_pretrained(
+        BASE_MODEL, torch_dtype=torch.float16).to("cuda")
+    m.generation_config.language = "korean"
+    m.generation_config.task = "transcribe"
+    return m
+
+def load16k(p):
+    y, sr = sf.read(p, dtype='float32')
+PY 나쁨. 어댑터 경로/로드 재확인"){cer_ft*100:.2f}%)이 baseline보
+평가 샘플 120건 / 화자 4명
+어댑터: /home/j-i15a708/stt-finetune/whisper-lora-exp8/final
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+[1/2] baseline 측정...
+Loading weights: 100%|███████| 947/947 [00:00<00:00, 4390.54it/s]
+  [base] 30/120
+  [base] 60/120
+  [base] 90/120
+  [base] 120/120
+
+[2/2] exp8 측정...
+Loading weights: 100%|███████| 947/947 [00:00<00:00, 5129.54it/s]
+  [exp8] 30/120
+  [exp8] 60/120
+  [exp8] 90/120
+  [exp8] 120/120
+
+==========================================================
+  WebRTC 평가셋 (120건, 화자 4명) - exp8 어댑터
+  파인튜닝 전 : 9.89%
+  파인튜닝 후 : 4.53%
+  개선폭      : 54.2%
+  (참고) 이전 exp5 기준: 9.89% -> 4.83% (51.1%)
+  (참고) 전화망 500샘플: 11.70% -> 5.56%
+==========================================================
+
+증거 저장: /home/j-i15a708/stt-finetune/eval_webrtc/webrtc_result_exp8.json
+
+[전/후 비교 샘플]
+
+정답: 약관을 전달드리고 중요한 내용을 설명드리겠습니다.
+전  : 약관을 전달드리고 중요한 내용을 설명드리겠습니다.
+후  : 약관을 전달드리고 중요한 내용을 설명드리겠습니다.
+
+정답: 이 약관 안에 보장되는 내용이랑 안 되는 내용이 다 적혀 있으니까 받으시면 한번 쭉 읽어보세요.
+전  : 이 약관 안에 보장되는 내용이랑 안 되는 내용이 다 적혀 있으니까 받으시면 한번 쭉 읽어보세요.
+후  : 이 약관 안에 보장되는 내용이랑 안 되는 내용이 다 적혀있으니까 받으시면 한번 쭉 읽어보세요.
+
+정답: 이 보장은 여든 살까지 받으실 수 있고요, 그 이후부터는 보장이 끝나요.
+전  : 이 보장은 80살까지 받을 수 있고요 그 이후부터는 보장이 끝나요.
+후  : 이 보장은 여든 살까지 받을 수 있고요. 그 이후부터는 보장이 끝나요.
+
+정답: 위험보장 기간은 첫 회 보험료 내신 날부터 시작된다고 보시면 됩니다.
+전  : 위험보장기간은 첫해 보험료 내시 내신 날부터 시작된다고 보시면 됩니다.
+후  : 위험보장기간은 첫 회 보험료 내시 내신 날부터 시작된다고 보시면 됩니다.
+
+정답: 중간에 해지하시면 그동안 낸 보험료보다 훨씬 적게 돌려받으실 수 있어요.
+전  : 중간에 해지하시면 그동안 낸 보험료보다 훨씬 적게 돌려 받으실 수 있어요.
+후  : 중간에 해지하시면 그동안 낸 보험료보다 훨씬 적게 돌려받으실 수 있어요.
+
+RESULT: PASS - exp8 실환경 9.89% -> 4.53%
+NEXT: 이 출력 캡처 -> 슬라이드 수치 교체, exp5 각주 삭제
+j-i15a708@jupyter10:~/stt-finetune/eval_webrtc$ cd ~/P11708_new/P11708/ai && python3 tools/session_report.py bot.log 15 --near 0.05 > session15_report.txt 2>&1 && head -3 session15_report.txt
+========================================================================
+세션 15 | 항목 42개 | covered=13/42 (END) | 발화 세그먼트 65개 | 임계(역산) 0.58
+j-i15a708@jupyter10:~/P11708_new/P11708/ai$ # ── H200 터미널 ──
+cd ~/P11708_new/P11708/ai
+echo "===== [1] 봇 프로세스 ====="
+pgrep -af "bot" | grep -v grep || echo "!! 봇 안 떠있음"
+
+echo "===== [2] 게이트 상태 (shadow 마크 확인) ====="
+grep -m3 "gate" bot.log 2>/dev/null || echo "!! gate 로그 없음"
+
+echo "===== [3] .env 무결성 (값 노출 없이 키 개수만) ====="
+for k in EMBED_GATE EMBED_GATE_THRESHOLD INTERNAL_API_KEY STT_MAX_SPLIT_OVERLAP_SEC STT_REPEAT_GUARD STT_TRIM_TAIL_SILENCE; do
+  echo "$k: $(grep -c "^$k=" .env)개"
+done
+
+echo "===== [4] 임베딩 주입 (canonicalEmbedding 회귀 확인) =====" 
+grep -m3 -i "embed\|주입\|canonical" bot.log | head -5
+
+echo "===== [5] 로드된 어댑터 ====="
+grep -m3 -i "adapter\|lora\|exp" bot.log | head -5
+
+echo "===== [6] 배포 코드 = 최신 커밋인가 ====="
+git log -1 --oneline
+git status --short | head -5
+
+echo "===== [7] GPU/디스크 ====="
+nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader
+df -h ~ | tail -1
+
+echo "===== [8] 최근 에러 ====="
+grep -c -i "error\|exception\|traceback" bot.log 2>/dev/null
+grep -m3 -i "error\|exception" bot.log | tail -3
+===== [1] 봇 프로세스 =====
+pgrep -af "bot" | grep -v grep || echo "echo "===== [1] 봇 프로세스 =====" 봇 안 떠있음"
+841616 python -m worker.bot
+842285 tail -f bot.log
+===== [2] 게이트 상태 (shadow 마크 확인) =====
+grep -m3 "gate" bot.log 2>/dev/null || echo "echo "===== [2] 게이트 상태 (shadow 마크 확인) =====" gate 로그 없음"
+bash: syntax error near unexpected token `('
+===== [3] .env 무결성 (값 노출 없이 키 개수만) =====
+EMBED_GATE: 1개
+EMBED_GATE_THRESHOLD: 0개
+INTERNAL_API_KEY: 1개
+STT_MAX_SPLIT_OVERLAP_SEC: 1개
+STT_REPEAT_GUARD: 1개
+STT_TRIM_TAIL_SILENCE: 1개
+===== [4] 임베딩 주입 (canonicalEmbedding 회귀 확인) =====
+2026-08-07 15:02:28,540 INFO [bot] 임베딩 fallback ON (EMBED_BACKEND=gms, GMS 키 감지)
+2026-08-07 15:02:28,657 INFO [bot] [14] BE 벡터 주입 0/26 (전부 null - 자체 임베딩 폴백)
+2026-08-07 15:02:29,585 INFO [httpx] HTTP Request: POST https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+===== [5] 로드된 어댑터 =====
+2026-08-07 15:02:35,604 INFO [worker.stt] STT 로딩: base=seastar105/whisper-medium-komixv2 adapter=whisper-lora-exp8/final device=cuda load=torch.float32 run=torch.float16
+===== [6] 배포 코드 = 최신 커밋인가 =====
+e58b63b (HEAD -> dev/ai, origin/dev/ai) feat(tools): session_report - bot.log 에서 세션 성적표 재구성
+?? .env.bak
+?? .env.bak.0806_2232
+?? .env.swp
+?? bot.log
+?? docs/bench_stt.json
+===== [7] GPU/디스크 =====
+5993 MiB, 143771 MiB
+21155 MiB, 143771 MiB
+/dev/mapper/lv_home-home   16T  443G   15T   3% /home
+===== [8] 최근 에러 =====
+2
+2026-08-07 15:02:49,907 ERROR [bot] [14] 오디오 유입 1.82x 실시간 - 포맷/중복구독 의심
+2026-08-07 15:03:19,917 ERROR [bot] [14] 오디오 유입 1.21x 실시간 - 포맷/중복구독 의심

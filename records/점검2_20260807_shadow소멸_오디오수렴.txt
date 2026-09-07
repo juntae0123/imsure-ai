@@ -1,0 +1,42 @@
+cd ~/P11708_new/P11708/ai
+
+echo "===== [A] gate shadow 마크 ====="
+grep -m3 gate bot.log
+
+echo "===== [B] 오디오 유입 추이 (1.00x 수렴했나) ====="
+grep "오디오 유입\|audio_rate\|x 실시간" bot.log | tail -15
+
+echo "===== [C] 스위치 값 + 임계 출처 (시크릿 아님) ====="
+grep -E "^(EMBED_GATE|STT_MAX_SPLIT|STT_REPEAT|STT_TRIM)" .env
+grep -rn "0.58\|GATE_THRESHOLD" worker/*.py | head -5
+
+echo "===== [D] .env 편집 중인 vi 있나 ====="
+fuser .env 2>&1; ls -la .env.swp
+===== [A] gate shadow 마크 =====
+2026-08-07 15:08:38,343 INFO [engine.matcher] gate 기각: sim=0.3753 < 0.58 | keyword=['지급'] (부정어 없는 절)
+2026-08-07 15:08:52,729 INFO [engine.matcher] gate 기각: sim=0.3680 < 0.58 | keyword=['약관'] (부정어 없는 절)
+2026-08-07 15:09:09,947 INFO [engine.state_machine] [15] COVERED 42 via keyword (None) | keyword=['달라질 수 있습니다'] (부정어 없는 절) | gate sim=0.6961 >= 0.58
+===== [B] 오디오 유입 추이 (1.00x 수렴했나) =====
+2026-08-07 15:12:30,257 INFO [bot] [15] 오디오 유입 1.00x
+2026-08-07 15:13:00,267 INFO [bot] [15] 오디오 유입 1.00x
+2026-08-07 15:13:30,267 INFO [bot] [15] 오디오 유입 1.00x
+2026-08-07 15:14:00,267 INFO [bot] [15] 오디오 유입 1.00x
+2026-08-07 15:49:57,067 INFO [bot] [16] 오디오 유입 1.00x
+2026-08-07 15:50:27,067 INFO [bot] [16] 오디오 유입 1.00x
+2026-08-07 15:55:46,257 INFO [bot] [17] 오디오 유입 1.00x
+2026-08-07 15:56:16,267 INFO [bot] [17] 오디오 유입 1.00x
+2026-08-07 15:56:46,277 INFO [bot] [17] 오디오 유입 1.00x
+2026-08-07 15:57:16,287 INFO [bot] [17] 오디오 유입 1.00x
+2026-08-07 15:57:46,297 INFO [bot] [17] 오디오 유입 1.00x
+2026-08-07 16:49:48,807 INFO [bot] [19] 오디오 유입 1.00x
+2026-08-07 16:50:18,807 INFO [bot] [19] 오디오 유입 1.00x
+2026-08-07 16:51:57,257 INFO [bot] [20] 오디오 유입 1.00x
+2026-08-07 16:59:16,627 INFO [bot] [21] 오디오 유입 1.00x
+===== [C] 스위치 값 + 임계 출처 (시크릿 아님) =====
+EMBED_GATE=on
+STT_MAX_SPLIT_OVERLAP_SEC=0       # 켤 때 0.4
+STT_REPEAT_GUARD=0                # 켤 때 1
+STT_TRIM_TAIL_SILENCE=0           # 켤 때 1
+===== [D] .env 편집 중인 vi 있나 =====
+-rw-r--r-- 1 j-i15a708 j-i15a708 12288 Aug  6 08:40 .env.swp
+j-i15a708@jupyter10:~/P11708_new/P11708/ai$ 

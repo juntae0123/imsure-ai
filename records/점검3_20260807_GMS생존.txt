@@ -1,0 +1,40 @@
+:~/P11708_new/P11708/ai$ # ── H200 터미널 ──
+cd ~/P11708_new/P11708/ai
+
+echo "===== [1] 최근 임베딩 호출 상태 (시간순 마지막 5개) ====="
+grep "embeddings" bot.log | tail -5
+
+echo "===== [2] 지금 이 순간 키 생존 테스트 ====="
+python3 - <<'PY'
+import os, httpx
+from dotenv import load_dotenv
+load_dotenv()
+key = os.getenv("GMS_API_KEY") or os.getenv("OPENAI_API_KEY") or ""
+assert key, "FAIL: .env에서 GMS 키 못 찾음 (키 이름 확인 필요)"
+r = httpx.post(
+    "https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings",
+    headers={"Authorization": f"Bearer {key}"},
+    json={"model": "text-embedding-3-small", "input": "키 생존 테스트"},
+    timeout=15,
+)
+print(f"HTTP {r.status_code}")
+print("RESULT: PASS - 현재 키 유효" if r.status_code == 200
+      else f"RESULT: FAIL - 키 죽음/거부: {r.text[:200]}")
+PY
+===== [1] 최근 임베딩 호출 상태 (시간순 마지막 5개) =====
+2026-08-07 16:52:13,166 INFO [httpx] HTTP Request: POST https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-07 16:52:16,046 INFO [httpx] HTTP Request: POST https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-07 16:59:10,998 INFO [httpx] HTTP Request: POST https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-07 16:59:17,908 INFO [httpx] HTTP Request: POST https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-07 16:59:20,055 INFO [httpx] HTTP Request: POST https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+===== [2] 지금 이 순간 키 생존 테스트 =====
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/home/j-i15a708/.local/lib/python3.12/site-packages/dotenv/main.py", line 419, in load_dotenv
+    dotenv_path = find_dotenv()
+                  ^^^^^^^^^^^^^
+  File "/home/j-i15a708/.local/lib/python3.12/site-packages/dotenv/main.py", line 367, in find_dotenv
+    assert frame.f_back is not None
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+j-i15a708@jupyter10:

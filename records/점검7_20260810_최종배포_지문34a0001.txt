@@ -1,0 +1,21 @@
+[출처: 2026-08-10 08:16 시연 당일 아침, ~/bot_restart.sh 실행 출력 - 프로젝트 최종 배포]
+
+기존 봇 종료
+remote: Enumerating objects: 75, done.
+remote: Counting objects: 100% (68/68), done.
+remote: Compressing objects: 100% (36/36), done.
+remote: Total 39 (delta 20), reused 6 (delta 3), pack-reused 0 (from 0)
+Unpacking objects: 100% (39/39), 39.83 MiB | 20.30 MiB/s, done.
+From https://lab.ssafy.com/s15-webmobile1-sub1/S15P11A708
+   98b1214..c403ce9  dev/fe     -> origin/dev/fe
+   7e5fbf4..9518b99  develop    -> origin/develop
+Already up to date.
+봇 PID: 862289
+RESULT: PASS - 연결 확인
+배포 지문: 34a0001 fix(bot): 마커 좌표 미래값 방지 클램프 (음수 lag 실측 대비)
+2026-08-10 08:16:54,457 INFO [bot] 임베딩 fallback ON (EMBED_BACKEND=gms, GMS 키 감지)
+0
+PASS
+
+[판독: 시연 당일 최종 상태 - 봇 PID 862289 / 배포 코드 = 마지막 커밋 34a0001(마커 수리+클램프) /
+ 임베딩 폴백 ON / 에러 카운트 0 / GMS 키 생존 PASS. 프로젝트 마지막 도장.]

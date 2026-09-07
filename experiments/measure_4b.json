@@ -1,0 +1,514 @@
+{
+  "utterances": [
+    {
+      "utterance": 0,
+      "expected": [],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 1,
+      "expected": [
+        "TERMS_EXPLAIN"
+      ],
+      "got": [
+        "TERMS_EXPLAIN"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 2,
+      "expected": [
+        "COVERAGE_PERIOD"
+      ],
+      "got": [
+        "COVERAGE_PERIOD"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 3,
+      "expected": [
+        "EXCLUSION_BEFORE_FIRST_PREMIUM"
+      ],
+      "got": [
+        "EXCLUSION_BEFORE_FIRST_PREMIUM"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 4,
+      "expected": [
+        "LOSS_POSSIBILITY"
+      ],
+      "got": [
+        "CONTRACT_CANCEL",
+        "EXCLUSION_WAITING_PERIOD_90D",
+        "LOSS_POSSIBILITY",
+        "PREMIUM_REDUCTION",
+        "SURRENDER_VALUE_EXCEPTION_100",
+        "SURRENDER_VALUE_EXCEPTION_RESERVE"
+      ],
+      "falseT": [
+        "CONTRACT_CANCEL",
+        "EXCLUSION_WAITING_PERIOD_90D",
+        "PREMIUM_REDUCTION",
+        "SURRENDER_VALUE_EXCEPTION_100",
+        "SURRENDER_VALUE_EXCEPTION_RESERVE"
+      ],
+      "miss": []
+    },
+    {
+      "utterance": 5,
+      "expected": [
+        "CONTRACT_CANCEL"
+      ],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 6,
+      "expected": [
+        "PREMIUM_REDUCTION"
+      ],
+      "got": [
+        "PAYMENT_LIMIT_1YEAR_50"
+      ],
+      "falseT": [
+        "PAYMENT_LIMIT_1YEAR_50"
+      ],
+      "miss": []
+    },
+    {
+      "utterance": 7,
+      "expected": [
+        "EXCLUSION_WAITING_PERIOD_90D"
+      ],
+      "got": [
+        "COVERAGE_DETAIL_BRAIN_HEART_DIAG",
+        "COVERAGE_DETAIL_CANCER_DIAG",
+        "COVERAGE_DETAIL_WAIVER"
+      ],
+      "falseT": [
+        "COVERAGE_DETAIL_BRAIN_HEART_DIAG",
+        "COVERAGE_DETAIL_CANCER_DIAG",
+        "COVERAGE_DETAIL_WAIVER"
+      ],
+      "miss": []
+    },
+    {
+      "utterance": 8,
+      "expected": [
+        "PAYMENT_LIMIT_1YEAR_50"
+      ],
+      "got": [
+        "COVERAGE_DETAIL_DEATH",
+        "PAYMENT_LIMIT_180DAYS_10_1YEAR_50",
+        "PAYMENT_LIMIT_ROBOT_SURGERY"
+      ],
+      "falseT": [
+        "COVERAGE_DETAIL_DEATH",
+        "PAYMENT_LIMIT_180DAYS_10_1YEAR_50",
+        "PAYMENT_LIMIT_ROBOT_SURGERY"
+      ],
+      "miss": []
+    },
+    {
+      "utterance": 9,
+      "expected": [
+        "COVERAGE_DETAIL_CANCER_DIAG",
+        "EXCLUSION_SIMILAR_CANCER"
+      ],
+      "got": [
+        "EXCLUSION_SIMILAR_CANCER",
+        "SURRENDER_VALUE_BASE"
+      ],
+      "falseT": [
+        "SURRENDER_VALUE_BASE"
+      ],
+      "miss": []
+    },
+    {
+      "utterance": 10,
+      "expected": [
+        "COVERAGE_DETAIL_BRAIN_HEART_DIAG"
+      ],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 11,
+      "expected": [
+        "COVERAGE_DETAIL_WAIVER"
+      ],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 12,
+      "expected": [
+        "COVERAGE_DETAIL_HOSPITALIZATION"
+      ],
+      "got": [
+        "COVERAGE_DETAIL_HOSPITALIZATION",
+        "COVERAGE_DETAIL_SURGERY"
+      ],
+      "falseT": [
+        "COVERAGE_DETAIL_SURGERY"
+      ],
+      "miss": []
+    },
+    {
+      "utterance": 13,
+      "expected": [
+        "COVERAGE_DETAIL_SURGERY"
+      ],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 14,
+      "expected": [
+        "PAYMENT_LIMIT_180DAYS_10_1YEAR_50",
+        "PAYMENT_LIMIT_ROBOT_SURGERY"
+      ],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 15,
+      "expected": [
+        "COVERAGE_DETAIL_DEATH"
+      ],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 16,
+      "expected": [
+        "COVERAGE_DETAIL_LIABILITY",
+        "EXCLUSION_PROPORTIONAL_LIABILITY"
+      ],
+      "got": [
+        "COVERAGE_DETAIL_LIABILITY",
+        "EXCLUSION_PROPORTIONAL_LIABILITY"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 17,
+      "expected": [
+        "EXCLUSION_CATARACT"
+      ],
+      "got": [
+        "EXCLUSION_CATARACT"
+      ],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 18,
+      "expected": [
+        "SURRENDER_VALUE_EXCEPTION_100"
+      ],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 19,
+      "expected": [
+        "SURRENDER_VALUE_EXCEPTION_RESERVE"
+      ],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    },
+    {
+      "utterance": 20,
+      "expected": [],
+      "got": [],
+      "falseT": [],
+      "miss": []
+    }
+  ],
+  "spurious": [
+    {
+      "utterance": 9,
+      "itemCode": "SURRENDER_VALUE_BASE",
+      "keywords": [
+        "지급하지 않습니다"
+      ],
+      "text": "보장개시일 이후 암으로 진단확정되면 가입금액을 지급합니다. 다만 제자리암이나 경계성종양 같은 유사암은 지급하지 않습니다."
+    }
+  ],
+  "premature": [
+    {
+      "utterance": 4,
+      "itemCode": "CONTRACT_CANCEL",
+      "keywords": [
+        "해지"
+      ],
+      "text": "중도에 해지하시면 해약환급금이 납입 보험료보다 적어 손실이 발생할 수 있습니다.",
+      "expectedAt": [
+        5
+      ]
+    },
+    {
+      "utterance": 4,
+      "itemCode": "EXCLUSION_WAITING_PERIOD_90D",
+      "keywords": [
+        "환급"
+      ],
+      "text": "중도에 해지하시면 해약환급금이 납입 보험료보다 적어 손실이 발생할 수 있습니다.",
+      "expectedAt": [
+        7
+      ]
+    },
+    {
+      "utterance": 4,
+      "itemCode": "PREMIUM_REDUCTION",
+      "keywords": [
+        "보험료"
+      ],
+      "text": "중도에 해지하시면 해약환급금이 납입 보험료보다 적어 손실이 발생할 수 있습니다.",
+      "expectedAt": [
+        6
+      ]
+    },
+    {
+      "utterance": 4,
+      "itemCode": "SURRENDER_VALUE_EXCEPTION_100",
+      "keywords": [
+        "해지"
+      ],
+      "text": "중도에 해지하시면 해약환급금이 납입 보험료보다 적어 손실이 발생할 수 있습니다.",
+      "expectedAt": [
+        18
+      ]
+    },
+    {
+      "utterance": 4,
+      "itemCode": "SURRENDER_VALUE_EXCEPTION_RESERVE",
+      "keywords": [
+        "해지"
+      ],
+      "text": "중도에 해지하시면 해약환급금이 납입 보험료보다 적어 손실이 발생할 수 있습니다.",
+      "expectedAt": [
+        19
+      ]
+    },
+    {
+      "utterance": 6,
+      "itemCode": "PAYMENT_LIMIT_1YEAR_50",
+      "keywords": [
+        "감액"
+      ],
+      "text": "부담되시면 나중에 보험료의 감액을 청구하실 수 있습니다.",
+      "expectedAt": [
+        8
+      ]
+    },
+    {
+      "utterance": 7,
+      "itemCode": "COVERAGE_DETAIL_BRAIN_HEART_DIAG",
+      "keywords": [
+        "진단확정"
+      ],
+      "text": "계약일부터 90일이 지나기 전 암 진단확정 시 해당 특약은 무효로 하고 보험료를 환급합니다.",
+      "expectedAt": [
+        10
+      ]
+    },
+    {
+      "utterance": 7,
+      "itemCode": "COVERAGE_DETAIL_CANCER_DIAG",
+      "keywords": [
+        "암",
+        "진단확정"
+      ],
+      "text": "계약일부터 90일이 지나기 전 암 진단확정 시 해당 특약은 무효로 하고 보험료를 환급합니다.",
+      "expectedAt": [
+        9
+      ]
+    },
+    {
+      "utterance": 7,
+      "itemCode": "COVERAGE_DETAIL_WAIVER",
+      "keywords": [
+        "암"
+      ],
+      "text": "계약일부터 90일이 지나기 전 암 진단확정 시 해당 특약은 무효로 하고 보험료를 환급합니다.",
+      "expectedAt": [
+        11
+      ]
+    },
+    {
+      "utterance": 8,
+      "itemCode": "COVERAGE_DETAIL_DEATH",
+      "keywords": [
+        "가입금액"
+      ],
+      "text": "최초 보험가입 후 1년 미만에 보험금 지급사유가 발생하면 가입금액의 50% 감액 지급합니다.",
+      "expectedAt": [
+        15
+      ]
+    },
+    {
+      "utterance": 8,
+      "itemCode": "PAYMENT_LIMIT_180DAYS_10_1YEAR_50",
+      "keywords": [
+        "1년 미만",
+        "감액 지급"
+      ],
+      "text": "최초 보험가입 후 1년 미만에 보험금 지급사유가 발생하면 가입금액의 50% 감액 지급합니다.",
+      "expectedAt": [
+        14
+      ]
+    },
+    {
+      "utterance": 8,
+      "itemCode": "PAYMENT_LIMIT_ROBOT_SURGERY",
+      "keywords": [
+        "1년 미만",
+        "50% 감액"
+      ],
+      "text": "최초 보험가입 후 1년 미만에 보험금 지급사유가 발생하면 가입금액의 50% 감액 지급합니다.",
+      "expectedAt": [
+        14
+      ]
+    },
+    {
+      "utterance": 12,
+      "itemCode": "COVERAGE_DETAIL_SURGERY",
+      "keywords": [
+        "상해",
+        "질병"
+      ],
+      "text": "상해나 질병으로 1일 이상 입원하시면 입원일당을 180일 한도로 지급합니다.",
+      "expectedAt": [
+        13
+      ]
+    }
+  ],
+  "misses": [],
+  "blame": [
+    {
+      "itemCode": "CONTRACT_CANCEL",
+      "keyword": "해지",
+      "count": 1
+    },
+    {
+      "itemCode": "EXCLUSION_WAITING_PERIOD_90D",
+      "keyword": "환급",
+      "count": 1
+    },
+    {
+      "itemCode": "PREMIUM_REDUCTION",
+      "keyword": "보험료",
+      "count": 1
+    },
+    {
+      "itemCode": "SURRENDER_VALUE_EXCEPTION_100",
+      "keyword": "해지",
+      "count": 1
+    },
+    {
+      "itemCode": "SURRENDER_VALUE_EXCEPTION_RESERVE",
+      "keyword": "해지",
+      "count": 1
+    },
+    {
+      "itemCode": "PAYMENT_LIMIT_1YEAR_50",
+      "keyword": "감액",
+      "count": 1
+    },
+    {
+      "itemCode": "COVERAGE_DETAIL_BRAIN_HEART_DIAG",
+      "keyword": "진단확정",
+      "count": 1
+    },
+    {
+      "itemCode": "COVERAGE_DETAIL_CANCER_DIAG",
+      "keyword": "암",
+      "count": 1
+    },
+    {
+      "itemCode": "COVERAGE_DETAIL_CANCER_DIAG",
+      "keyword": "진단확정",
+      "count": 1
+    },
+    {
+      "itemCode": "COVERAGE_DETAIL_WAIVER",
+      "keyword": "암",
+      "count": 1
+    },
+    {
+      "itemCode": "COVERAGE_DETAIL_DEATH",
+      "keyword": "가입금액",
+      "count": 1
+    },
+    {
+      "itemCode": "PAYMENT_LIMIT_180DAYS_10_1YEAR_50",
+      "keyword": "1년 미만",
+      "count": 1
+    },
+    {
+      "itemCode": "PAYMENT_LIMIT_180DAYS_10_1YEAR_50",
+      "keyword": "감액 지급",
+      "count": 1
+    },
+    {
+      "itemCode": "PAYMENT_LIMIT_ROBOT_SURGERY",
+      "keyword": "1년 미만",
+      "count": 1
+    },
+    {
+      "itemCode": "PAYMENT_LIMIT_ROBOT_SURGERY",
+      "keyword": "50% 감액",
+      "count": 1
+    },
+    {
+      "itemCode": "SURRENDER_VALUE_BASE",
+      "keyword": "지급하지 않습니다",
+      "count": 1
+    },
+    {
+      "itemCode": "COVERAGE_DETAIL_SURGERY",
+      "keyword": "상해",
+      "count": 1
+    },
+    {
+      "itemCode": "COVERAGE_DETAIL_SURGERY",
+      "keyword": "질병",
+      "count": 1
+    }
+  ],
+  "summary": {
+    "totalItems": 23,
+    "expectedItems": 22,
+    "finalCovered": 23,
+    "falseTSpurious": 1,
+    "falseTPremature": 13,
+    "dirtyItems": 14,
+    "misses": 0,
+    "neverCovered": [],
+    "grayZone": {
+      "embeddingGray": 0,
+      "doubleNegation": 1,
+      "negationExemptHit": 4,
+      "grayMaxSim": null
+    }
+  }
+}

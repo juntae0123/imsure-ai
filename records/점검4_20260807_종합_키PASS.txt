@@ -1,0 +1,120 @@
+j-i15a708@jupyter10:~/P11708_new/P11708/ai$ # ── H200 터미널 ──
+cd ~/P11708_new/P11708/ai
+
+echo "===== [1] 최근 임베딩 호출 상태 (시간순 마지막 5개) ====="
+grep "embeddings" bot.log | tail -5
+
+echo "===== [2] 지금 이 순간 키 생존 테스트 ====="
+python3 - <<'PY'
+import os, httpx
+from dotenv import load_dotenv
+load_dotenv()
+key = os.getenv("GMS_API_KEY") or os.getenv("OPENAI_API_KEY") or ""
+assert key, "FAIL: .env에서 GMS 키 못 찾음 (키 이름 확인 필요)"
+r = httpx.post(
+    "https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings",
+    headers={"Authorization": f"Bearer {key}"},
+    json={"model": "text-embedding-3-small", "input": "키 생존 테스트"},
+    timeout=15,
+)
+print(f"HTTP {r.status_code}")
+print("RESULT: PASS - 현재 키 유효" if r.status_code == 200
+      else f"RESULT: FAIL - 키 죽음/거부: {r.text[:200]}")
+PY
+===== [1] 최근 임베딩 호출 상태 (시간순 마지막 5개) =====
+2026-08-07 16:52:13,166 INFO [httpx] HTTP Request: POST https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-07 16:52:16,046 INFO [httpx] HTTP Request: POST https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-07 16:59:10,998 INFO [httpx] HTTP Request: POST https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-07 16:59:17,908 INFO [httpx] HTTP Request: POST https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-07 16:59:20,055 INFO [httpx] HTTP Request: POST https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+===== [2] 지금 이 순간 키 생존 테스트 =====
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/home/j-i15a708/.local/lib/python3.12/site-packages/dotenv/main.py", line 419, in load_dotenv
+    dotenv_path = find_dotenv()
+                  ^^^^^^^^^^^^^
+  File "/home/j-i15a708/.local/lib/python3.12/site-packages/dotenv/main.py", line 367, in find_dotenv
+    assert frame.f_back is not None
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+j-i15a708@jupyter10:~/P11708_new/P11708/ai$ # ── H200 터미널 ──
+cd ~/P11708_new/P11708/ai
+
+echo '===== [1] 봇 프로세스 + 기동시각 (24h 킬 역산용) ====='
+ps -o pid,lstart,cmd -p $(pgrep -f "worker.bot" | head -1) 2>/dev/null || echo 'FAIL: 봇 안 떠있음'
+
+echo '===== [2] gate 상태 (on 0.58, shadow 없어야) ====='
+grep gate bot.log | tail -3
+
+echo '===== [3] BE 벡터 주입 - canonicalEmbedding 수복됐나 =====' 
+grep "벡터 주입" bot.log | tail -3
+
+echo '===== [4] 오디오 유입 최근 추이 ====='
+grep "오디오 유입" bot.log | tail -5
+
+echo '===== [5] .env 무결성 (개수만) ====='
+for k in EMBED_GATE INTERNAL_API_KEY GMS_API_KEY STT_MAX_SPLIT_OVERLAP_SEC STT_REPEAT_GUARD STT_TRIM_TAIL_SILENCE; do
+  echo "$k: $(grep -c "^$k=" .env)개"
+done
+ls .env.swp 2>/dev/null && echo 'WARN: swp 재출현' || echo 'swp  없음 OK'
+
+echo '===== [6] GMS 키 생존 (지난번 dotenv 버그 우회판) ====='
+python3 - <<'PY'
+import os, httpx
+from dotenv import load_dotenv
+load_dotenv("/home/j-i15a708/P11708_new/P11708/ai/.env")
+key = os.getenv("GMS_API_KEY") or os.getenv("OPENAI_API_KEY") or ""
+if not key:
+    print("FAIL: 키 변수 못 찾음")
+else:
+    r = httpx.post("https://gms.ssafy.io/gmsapi/api.openai.com/v1/embeddings",
+        headers={"Authorization": f"Bearer {key}"},
+        json={"model": "text-embedding-3-small", "input": "시연  전날 키 생존"},
+        timeout=15)
+    print("PASS - 키 유효" if r.status_code == 200 else f"FAIL - HTTP {r.status_code}: {r.text[:150]}")
+PY
+
+echo '===== [7] 어댑터 + 배포 정합 ====='
+grep -m1 "adapter=" bot.log
+git log -1 --oneline
+git status --short | grep -v "^??" || echo '추적 파일 변경 없음 OK'
+
+echo '===== [8] 에러 (오늘자만) ====='
+df -h ~ | tail -1y-gpu=memory.used,memory.total --format=csv,nohe
+===== [1] 봇 프로세스 + 기동시각 (24h 킬 역산용) =====
+    PID                  STARTED CMD
+ 841616 Fri Aug  7 15:02:27 2026 python -m worker.bot
+===== [2] gate 상태 (on 0.58, shadow 없어야) =====
+2026-08-07 15:13:10,879 INFO [engine.state_machine] [15] COVERED 24 via keyword (None) | keyword=['청약을 철회'] (부정어 없는 절) | gate sim=0.6890 >= 0.58
+2026-08-07 15:13:10,879 INFO [engine.matcher] gate 기각: sim=0.5076 < 0.58 | keyword=['청약', '철회'] (부정어 없는 절)
+2026-08-07 15:13:26,550 INFO [engine.matcher] gate 기각: sim=0.4232 < 0.58 | keyword=['철회'] (부정어 없는 절)
+===== [3] BE 벡터 주입 - canonicalEmbedding 수복됐나 =====
+2026-08-07 16:49:37,531 INFO [bot] [19] BE 벡터 주입 0/42 (전부 null - 자체 임베딩 폴백)
+2026-08-07 16:51:45,962 INFO [bot] [20] BE 벡터 주입 0/42 (전부 null - 자체 임베딩 폴백)
+2026-08-07 16:59:05,313 INFO [bot] [21] BE 벡터 주입 0/42 (전부 null - 자체 임베딩 폴백)
+===== [4] 오디오 유입 최근 추이 =====
+2026-08-07 15:57:46,297 INFO [bot] [17] 오디오 유입 1.00x
+2026-08-07 16:49:48,807 INFO [bot] [19] 오디오 유입 1.00x
+2026-08-07 16:50:18,807 INFO [bot] [19] 오디오 유입 1.00x
+2026-08-07 16:51:57,257 INFO [bot] [20] 오디오 유입 1.00x
+2026-08-07 16:59:16,627 INFO [bot] [21] 오디오 유입 1.00x
+===== [5] .env 무결성 (개수만) =====
+EMBED_GATE: 1개
+INTERNAL_API_KEY: 1개
+GMS_API_KEY: 0개
+STT_MAX_SPLIT_OVERLAP_SEC: 1개
+STT_REPEAT_GUARD: 1개
+STT_TRIM_TAIL_SILENCE: 1개
+swp 없음 OK
+===== [6] GMS 키 생존 (지난번 dotenv 버그 우회판) =====
+PASS - 키 유효
+===== [7] 어댑터 + 배포 정합 =====
+2026-08-07 15:02:35,604 INFO [worker.stt] STT 로딩: base=seastar105/whisper-medium-komixv2 adapter=whisper-lora-exp8/final device=cuda load=torch.float32 run=torch.float16
+e58b63b (HEAD -> dev/ai, origin/dev/ai) feat(tools): session_report - bot.log 에서 세션 성적표 재구성
+추적 파일 변경 없음 OK
+===== [8] 에러 (오늘자만) =====
+2026-08-07 15:02:49,907 ERROR [bot] [14] 오디오 유입 1.82x 실시간 - 포맷/중복구독 의심
+2026-08-07 15:03:19,917 ERROR [bot] [14] 오디오 유입 1.21x 실시간 - 포맷/중복구독 의심
+===== [9] GPU/디스크 =====
+5993 MiB, 143771 MiB
+/dev/mapper/lv_home-home   16T  44
